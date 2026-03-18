@@ -1,0 +1,1 @@
+time g++ examples/example.cpp library/lexer.cc library/runtime.cc -o example && cd examples && ../example && cd ..

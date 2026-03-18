@@ -1,0 +1,26 @@
+compiler = "g++"
+src = "src"
+
+i = 0
+while !i = 1000{
+    if i = 101 {
+        print (compiler, src, 100, i)
+        compiler = "gcc"
+        src = "dir"
+    }
+    i = i + 1
+}
+
+
+print (
+    dir(
+        "ad"
+    )
+)
+
+times x "Hello", "world"
+
+
+{
+    print ("Token: ", x)
+}

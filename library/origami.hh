@@ -12,15 +12,15 @@
 
 #include "lexer.hh"
 #include "runtime.hh"
+#include "subfunction.hh"
 #include <fstream>
 #include <string>
 
 namespace origami {
     typedef std::vector<std::string> function;
     class ProgramFile {
-        private:
-            std::string code;
         public:
+            std::string code;
             ProgramFile(std::string file_name){
                 std::ifstream ifile (file_name);
                 if (ifile.is_open()){
@@ -37,6 +37,10 @@ namespace origami {
             oint::Runtime runtime;
 
             void run(){
+                code = origami::oint::subfunction(
+                    oint::Lexer(code, 0, 1)
+                );
+
                 runtime.execute(
                     origami::oint::Lexer(code)   
                 );
@@ -44,12 +48,14 @@ namespace origami {
     };
 
     class Program{
-        private:
-            std::string code;
         public:
+            std::string code;
             Program(std::string code_) : code(code_){}
             oint::Runtime runtime;
             void run(){
+                code = origami::oint::subfunction(
+                    oint::Lexer(code, 0, 1)
+                );
                 runtime.execute(
                     origami::oint::Lexer(code)   
                 );

@@ -208,8 +208,8 @@ namespace origami {
                         }
 
                         if (rside == "0"){
-                            std::cerr << "Divide by zero\n";
-                            std::exit(0);
+                            std::cerr << "Divide by zero.\n";
+                            std::exit(3);
                         }
 
                         result = std::to_string(std::stoi(lside) / std::stoi(rside));
@@ -241,8 +241,8 @@ namespace origami {
                         }
 
                         if (rside == "0"){
-                            std::cerr << "Divide by zero\n";
-                            std::exit(0);
+                            std::cerr << "Error: Divide by zero.\n";
+                            std::exit(3);
                         }
 
                         result = std::to_string(std::stoi(lside) % std::stoi(rside));
@@ -409,6 +409,11 @@ namespace origami {
             return rval;
         }
 
+
+
+        std::string Runtime::sub_function(std::string fname, std::string name) {
+            return fname + "_SUBFUNC_" + name;
+        }
 
 
 

@@ -1,0 +1,12 @@
+
+i = 0
+while !i = 100{
+    if i = 10{
+        print ("Hello world ", i)
+    }
+    i = i + 1
+    print ("The value of i is ", i)
+        .print("Do this")
+        .print("Do this2")
+}
+    

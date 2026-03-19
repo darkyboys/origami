@@ -1,0 +1,1 @@
+g++ examples/sexample.cpp library/runtime.cc library/lexer.cc -o srn && ./srn

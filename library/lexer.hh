@@ -17,7 +17,7 @@
 
 namespace origami {
     namespace oint{
-        std::vector <std::string> Lexer(std::string code);
+        std::vector <std::string> Lexer(std::string code, bool ignore_comma = true, bool keep_strings = false);
         bool is_brekable(char c);
     }
 }

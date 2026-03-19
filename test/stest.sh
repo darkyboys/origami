@@ -1,0 +1,1 @@
+g++ test/sufunc.test.cc library/lexer.cc -o stest && ./stest

@@ -76,7 +76,7 @@ namespace origami {
         }
 
 
-        std::vector <std::string> Lexer(std::string code){
+        std::vector <std::string> Lexer(std::string code, bool ignore_comma,  bool keep_strings){
             std::vector <std::string> return_value; // tokens
 
             // Process the code here
@@ -105,7 +105,12 @@ namespace origami {
                         // std::cout << "Adding buffer, "<<buffer<<"\n";// For debugging 
                     } 
                     if (string_buffer != "") {
-                        return_value.push_back("\"" + string_buffer);
+                        if (keep_strings){
+                            return_value.push_back("\"" + string_buffer + "\"");
+                        }
+                        else {
+                            return_value.push_back("\"" + string_buffer);
+                        }
                         // std::cout << "Adding str buffer, "<<buffer<<"\n";// For debugging 
                     }
 
@@ -138,7 +143,14 @@ namespace origami {
                     }
 
 
-                    if (string_buffer != "") return_value.push_back("\"" + string_buffer), string_buffer.clear();
+                    if (string_buffer != ""){
+                        if (keep_strings){
+                            return_value.push_back("\"" + string_buffer + "\""), string_buffer.clear();
+                        }
+                        else {
+                            return_value.push_back("\"" + string_buffer), string_buffer.clear();
+                        }
+                    }
 
                     // State machine
                     if (code[i] == '='){
@@ -152,7 +164,7 @@ namespace origami {
 
 
                     // Feel free to remove this , symbol , And add here other symbols that you wanna break but not include, This is here because it's easier for origami's parser to parse origami from it, But if you are writing a lexer for something like python , Java or C or even C++ then feel free to write exactly what you want and what you don't.
-                    if (code[i] == ','){
+                    if (code[i] == ',' and ignore_comma){
                         continue;
                     }
 
@@ -202,7 +214,12 @@ namespace origami {
                return_value.push_back(buffer);
             }
             if (!string_buffer.empty()) {
-               return_value.push_back("\"" + string_buffer); // keep the quote prefix for parser
+                if (keep_strings){
+                    return_value.push_back("\"" + string_buffer + "\"");
+                }
+                else {
+                    return_value.push_back("\"" + string_buffer); // keep the quote prefix for parser
+                }
             }
         
             return return_value;

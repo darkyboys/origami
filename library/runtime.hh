@@ -20,15 +20,15 @@ namespace origami {
             std::vector <std::string> value = {};
         };
 
-        struct SubFunction{
-            std::string name;
-            std::vector<std::string> (*func)(std::vector <std::string> args);
-        };
+        // struct SubFunction{
+        //     std::string name;
+        //     std::vector<std::string> (*func)(std::vector <std::string> args);
+        // };
 
         struct Function{
             std::string name;
             std::vector<std::string> (*func)(std::vector <std::string> args);
-            std::vector<SubFunction> subfunctions = {};
+            // std::vector<SubFunction> subfunctions = {};
         };
 
         bool is_number(std::string token); // tells if is number or not
@@ -49,6 +49,7 @@ namespace origami {
                 std::vector <std::string> normalize_expression(std::vector <std::string> tokens, uint line = 1); // for normalizing the variable names
                 void make_function(std::string name, std::vector<std::string> (*function)(std::vector <std::string> args));
                 // void make_sub_function(std::string fname, std::string name, std::vector<std::string> (*function)(std::vector <std::string> args)); // This code is depreceated but might be used in future
+                std::string sub_function(std::string fname, std::string name);
         };
     }
 }

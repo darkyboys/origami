@@ -504,7 +504,7 @@ Because x will already be calculated even before the comparison.
 
 **Installation** is very straightforward, Just clone this repository and the entire **Origami Library** is under the `library` directory. Just make sure to build the objects via `library/build.sh` file and combine them during the compilation.
 
-## Bug reposting
+## Bug reporting
 
 Please report any bugs by opening the an `issue`.
 

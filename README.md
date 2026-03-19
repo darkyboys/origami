@@ -452,6 +452,13 @@ The `AdvancedAPI` Provides us the `Lexer` function to convert the **raw origami 
 
 > A cute note for advanced programmers: `Tokens` are nothing more than `std::vector <std::string> tokens` .
 
+### Type structure
+`Type` is a `struct` (Structure) in **Origami Runtime** which contains only two things.
+ - `std::string` **name**: Stores the name of the variable
+ - `std::vector <std::string>` **value**: Stores all the value the variable have (Variable can have $n$ numbers of values).
+
+> A quick note, you can loop over the value to print all the values of a variable.
+
 #### Runtime class
 
 The `AdvancedAPI` Provides us the `Runtime` class which we can use to control the execution stage of the **Origami** programs.
@@ -468,6 +475,8 @@ The `AdvancedAPI` Provides us the `Runtime` class which we can use to control th
 
 - **sub_function(fname, name)**: This **function** takes a **function name** and a **subfunction name** and returns a `std::string` with format `fname_SUBFUNC_name`, Use this with `make_function` to create usable `subfunctions`.
 
+- **variable(name)**: This **function** gives us a `origami::oint::Type*` object (Pointer for `nullptr` checking), It will be nullptr if the variable wasn't found. And the `origami::oint::Type*` if it was found.
+
 #### Creating custom functions in Origami
 
 Now as you are familiar with the `API` Origami provides, Let's get focused on writing our own functions for `Origami` programs to use
@@ -476,10 +485,10 @@ To make **Origami Functions** you must understand that **Origami** uses the clas
 
 **Origami** uses the `std::vector` of `std::string` type, Please watch a tutorial on `std::vector` and `std::string` otherwise `Origami` may feel confusing to you.
 
-So with that's in mind, **Origami** functions are required to return a `std::vector <std::string>` and take one argument of that type, The return value can let the `Origami` interpreter return soo many values at once in an `array` and a single argument of `std::vector <std::string>` can store all the $n$ numbers of arguments without any issues. So the **Function** becomes.
+So with that's in mind, **Origami** functions are required to return a `std::vector <std::string>` and take one argument of that type and one argument of `origami::oint::Runtime* runtime` to let you access the runtime for things like creating and executing code, The return value can let the `Origami` interpreter return soo many values at once in an `array` and a single argument of `std::vector <std::string>` can store all the $n$ numbers of arguments without any issues. So the **Function** becomes.
 
 ```cpp
-std::vector <std::string> my_function (std::vector <std::string> args){
+std::vector <std::string> my_function (std::vector <std::string> args, origami::oint::Runtime* runtime){
 
 return {"Hello", "World", "2026", "!"};
 
@@ -513,7 +522,7 @@ x = i % 2
 
 if x = 0{
 
-print ("i is av even number: ", i)
+print ("i is an even number: ", i)
 
 }
 
@@ -531,7 +540,7 @@ i = i + 1
 
 
 
-origami::function print(origami::function args){
+origami::function print(origami::function args, origami::oint::Runtime* runtime){
 
 for (std::string s: args){
 
@@ -599,6 +608,9 @@ while !i = 100{
 Because x will already be calculated even before the comparison.
 
 ---
+
+## Examples
+More examples can be found in the *examples* directory
 
 ## License
 

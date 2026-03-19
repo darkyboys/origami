@@ -1,14 +1,14 @@
 #include "../library/origami.hh"
 #include <iostream>
 
-origami::function print(origami::function args){
+origami::function print(origami::function args, origami::oint::Runtime* rnt){
     for (std::string s : args){
         std::cout << s << "\n";
     }
     return {};
 }
 
-origami::function dir(origami::function args){
+origami::function dir(origami::function args, origami::oint::Runtime* rnt){
     origami::function rval = origami::oint::Lexer(R"(
 compiler = "g++"
 src = "src"

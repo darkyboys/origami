@@ -1,7 +1,7 @@
 #include "../library/origami.hh"
 #include <iostream>
 
-origami::function print(origami::function args){
+origami::function print(origami::function args, origami::oint::Runtime* rnt){
     for (std::string s: args){
         std::cout << s << '\n';
     }

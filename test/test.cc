@@ -2,26 +2,38 @@
 #include "../library/origami.hh"
 // #include "subfunction.hh"
 
-std::vector <std::string> add (std::vector <std::string> args){
+std::vector <std::string> add (std::vector <std::string> args, origami::oint::Runtime* rnt){
     std::vector <std::string> rval;
     std::string str;
     for (std::string s : args){
         // std::cout << "Adding: "<<s<<" to args.\n";
         str += s;
     }
+    
     rval.push_back(str);
     return rval;
 }
 
 
 
-origami::function list_return(origami::function args){
+origami::function list_return(origami::function args, origami::oint::Runtime* rnt){
     return origami::function{"Hello", "World", "2025"};
 }
 
-origami::function print (origami::function args){
+origami::function print (origami::function args, origami::oint::Runtime* rnt){
     for (std::string s : args){
         std::cout << s << "\n";
+    }
+
+    origami::oint::Type* var = rnt->variable("A");
+    if (var == nullptr){
+        std::cout << "A does not exist!";
+        rnt->execute(origami::oint::Lexer("A = 12"));
+        var = rnt->variable("A");
+        std::cout << "A was created with value: "<<var->value[0]<<"\n";
+    }
+    else {
+
     }
     return {};
 }

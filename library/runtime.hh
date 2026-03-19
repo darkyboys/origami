@@ -25,9 +25,11 @@ namespace origami {
         //     std::vector<std::string> (*func)(std::vector <std::string> args);
         // };
 
+        class Runtime;
+
         struct Function{
             std::string name;
-            std::vector<std::string> (*func)(std::vector <std::string> args);
+            std::vector<std::string> (*func)(std::vector <std::string> args, origami::oint::Runtime* runtime);
             // std::vector<SubFunction> subfunctions = {};
         };
 
@@ -47,7 +49,7 @@ namespace origami {
                 int make_normal (std::string variable, int i); // variation for different type
                 std::string make_normal (std::string variable);
                 std::vector <std::string> normalize_expression(std::vector <std::string> tokens, uint line = 1); // for normalizing the variable names
-                void make_function(std::string name, std::vector<std::string> (*function)(std::vector <std::string> args));
+                void make_function(std::string name, std::vector<std::string> (*function)(std::vector <std::string> args, origami::oint::Runtime* runtime));
                 // void make_sub_function(std::string fname, std::string name, std::vector<std::string> (*function)(std::vector <std::string> args)); // This code is depreceated but might be used in future
                 std::string sub_function(std::string fname, std::string name);
         };

@@ -417,7 +417,7 @@ namespace origami {
 
 
 
-        void Runtime :: make_function(std::string name, std::vector<std::string> (*function)(std::vector <std::string> args)){
+        void Runtime :: make_function(std::string name, std::vector<std::string> (*function)(std::vector <std::string> args, origami::oint::Runtime* runtime)){
             bool is_defined = false;
             for (Function func: functions){
                 if (func.name == name){
@@ -496,7 +496,7 @@ namespace origami {
 
                     for (std::size_t y = 0;y < functions.size();y++){
                         if (functions[y].name == func_name){
-                            std::vector <std::string> rvalx = functions[y].func(real_args);
+                            std::vector <std::string> rvalx = functions[y].func(real_args, this);
                             for (std::string s : rvalx){
                                 if (is_number(s)){
                                     rval.push_back(s);

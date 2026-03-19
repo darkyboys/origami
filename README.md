@@ -558,6 +558,46 @@ file.run();
 
 > This was all the API of the origami language, Please note that before reporting any bugs to origami take a look at your code , Maybe your own code might be causing bugs.
 
+### A very important case
+**Origami** do not have the operator presidence but it still have operator evaluation.
+Let's suppose that you have `1 + 1 - 2` Now the output should be `1 + 1` which is `2` then `2 - 2` which is `0` but no. The output will be `0` but now like how you think. **Origami** will resolve both the left and right operands before performing addition. Means `1-2` and `1` will be performed before anything. 
+
+Now `1 - 2` is `-1` and `1` is just `1` so we get `1-1` which is `0`. This is why it matters.
+
+Why do you need to know this ?
+If you ignore this then you will fall into classic **Faliure by zero divison**.
+
+**Look at this carefully**
+```ruby
+i = 1
+while !i = 100{
+    if i % 2 = 0{
+         print ("i is av even number: ", i)
+    }
+    i = i + 1
+}
+```
+
+Found anything wrong ?
+Well it's simple , Look at the `if` statement.
+It says `i % 2 = 0` Now this is the problem because, When ever the **Origami** will find `%` operator it will try to normalize both left and right operands before it can divide them. So here `i` will become `1` as it's previous value was `1` but `2 = 0` will compare if `2` is `0` via the **Boolean Operator** and this is `False` means `2 = 0` will become `0` and **Origami** will get `1 % 0` which is the `Divide by Zero Error`.
+
+So before reporting these please try to check your programs to see if they are logically fine.
+
+The correct version of that program will be
+```ruby
+i = 1
+while !i = 100{
+    x = i % 2
+    if x = 0{
+         print ("i is av even number: ", i)
+    }
+    i = i + 1
+}
+```
+
+Because x will already be calculated even before the comparison.
+
 ---
 
 ## License

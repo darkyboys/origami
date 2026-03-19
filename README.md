@@ -3,9 +3,7 @@
 **Origami** is an open source hyper flexible and moding friendly programming language made for C++ Program who really want a very reliable and super simple language for their projects.
 
 
-
-![@](/home/aero/Documents/projects/native/Origami/images/banner.png)
-
+<img src="images/banner.png">
 
 
 **Origami** is heavily focused on it's simplicity , Both in the programming language and it's API, The language itself is a backend driven language means that the **Origami** only have the core features including, Variables, Conditional and loops , The functions are defined by the backend programmer directly for using in program.

@@ -485,10 +485,10 @@ To make **Origami Functions** you must understand that **Origami** uses the clas
 
 **Origami** uses the `std::vector` of `std::string` type, Please watch a tutorial on `std::vector` and `std::string` otherwise `Origami` may feel confusing to you.
 
-So with that's in mind, **Origami** functions are required to return a `std::vector <std::string>` and take one argument of that type and one argument of `origami::oint::Runtime* runtime` to let you access the runtime for things like creating and executing code, The return value can let the `Origami` interpreter return soo many values at once in an `array` and a single argument of `std::vector <std::string>` can store all the $n$ numbers of arguments without any issues. So the **Function** becomes.
+So with that's in mind, **Origami** functions are required to return a `std::vector <std::string>` and take one argument of that type and one argument of `origami::oint::Runtime* runtime` to let you access the runtime for things like creating and executing code, The return value can let the `Origami` interpreter return soo many values at once in an `array` and a single argument of `const std::vector <std::string>&` can store all the $n$ numbers of arguments without any issues. So the **Function** becomes.
 
 ```cpp
-std::vector <std::string> my_function (std::vector <std::string> args, origami::oint::Runtime* runtime){
+std::vector <std::string> my_function (const std::vector <std::string>& args, origami::oint::Runtime* runtime){
 
 return {"Hello", "World", "2026", "!"};
 

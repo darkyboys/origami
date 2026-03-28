@@ -114,7 +114,8 @@ namespace origami {
                         std::string lside = evaluate(lside_tokens);
                         std::string rside = evaluate(rside_tokens);
 
-                        if (lside[0] == '"' and lside[0] == '"'){
+                        if (lside[0] == '"' and rside[0] == '"'){
+                            // std::cout <<"Triggered!\n";
                             result = "\"" + lside.substr(1) + rside.substr(1);
                         }
                         else if (lside[0] == '"'){

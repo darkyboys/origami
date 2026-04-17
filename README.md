@@ -622,7 +622,7 @@ More examples can be found in the *examples* directory
 
 ## Installation
 
-**Installation** is very straightforward, Just clone this repository and the entire **Origami Library** is under the `library` directory. Just make sure to build the objects via `library/build.sh` file and combine them during the compilation.
+**Installation** is very straightforward, Just clone this repository and the entire **Origami Library** is under the `library` directory. Just make sure to build the objects via `library/build.sh` file and combine them during the compilation. (Objects are built inside the objects directory)
 
 ## Bug reporting
 
